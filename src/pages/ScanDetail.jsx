@@ -34,7 +34,7 @@ export default function ScanDetail() {
         const data = await getScan(id);
         setScan(data);
         setEditedData(data.structured_json || {});
-      } catch (error) {
+      } catch {
         toast.error('Scan not found');
         navigate('/history');
       } finally {

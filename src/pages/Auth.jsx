@@ -61,54 +61,10 @@ export default function Auth() {
         navigate('/dashboard', { replace: true });
       }
 
-      // TEMPORARILY DISABLED: Store credentials for potential saving
-      // setSavedCredentials({ email, password });
-      // setShowSavePrompt(true);
     } catch (error) {
       toast.error(getErrorMessage(error));
       setLoading(false);
     }
-  };
-
-  const handleSavePassword = async () => {
-    if (!savedCredentials) return;
-
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-
-      const encryptedPassword = encryptPassword(savedCredentials.password, user.id);
-      const strength = calculatePasswordStrength(savedCredentials.password);
-
-      await insertPasswordVaultEntry({
-        user_id: user.id,
-        website_name: 'BizPocket',
-        website_url: window.location.origin,
-        username: savedCredentials.email,
-        password_encrypted: encryptedPassword,
-        password_strength: strength.score,
-        favicon_url: `${window.location.origin}/favicon.svg`
-      });
-
-      toast.success('Password saved to vault!');
-      setShowSavePrompt(false);
-      setSavedCredentials(null);
-      navigate(from, { replace: true });
-    } catch (error) {
-      console.error('Failed to save password:', error);
-      toast.error('Failed to save password');
-      // Navigate anyway
-      navigate(from, { replace: true });
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleDismissSavePrompt = () => {
-    setShowSavePrompt(false);
-    setSavedCredentials(null);
-    setLoading(false);
-    navigate(from, { replace: true });
   };
 
   return (

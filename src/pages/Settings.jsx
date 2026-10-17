@@ -23,7 +23,7 @@ const CURRENCIES = [
 
 export default function Settings() {
   const { user } = useAuth();
-  const { theme, currency, setTheme, setCurrency, toggleTheme, isDark } = useTheme();
+  const { currency, setCurrency, toggleTheme, isDark } = useTheme();
   const toast = useToast();
   const navigate = useNavigate();
 

@@ -5,7 +5,6 @@ import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { sendPasswordResetEmail } from '../lib/supabase';
 import { useToast } from '../hooks/useToast';
-import { getErrorMessage } from '../lib/utils';
 
 export default function ForgotPassword() {
     const [email, setEmail] = useState('');

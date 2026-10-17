@@ -2,7 +2,7 @@ import { Html5Qrcode } from 'html5-qrcode';
 
 // Helper function to preprocess image for better QR detection
 async function preprocessImage(file) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         const reader = new FileReader();
         reader.onload = (e) => {
             const img = new Image();
@@ -151,7 +151,7 @@ export function extractLinkedInUsername(url) {
     if (!url) return null;
 
     // Match patterns like linkedin.com/in/username
-    const match = url.match(/linkedin\.com\/in\/([^\/\?]+)/);
+    const match = url.match(/linkedin\.com\/in\/([^/?]+)/);
     return match ? match[1] : null;
 }
 

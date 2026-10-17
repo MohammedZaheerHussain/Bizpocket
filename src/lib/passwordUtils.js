@@ -84,7 +84,7 @@ export function calculatePasswordStrength(password) {
     const hasLowercase = /[a-z]/.test(password);
     const hasUppercase = /[A-Z]/.test(password);
     const hasNumbers = /[0-9]/.test(password);
-    const hasSymbols = /[!@#$%^&*()_+\-=\[\]{}|;:,.<>?]/.test(password);
+    const hasSymbols = /[!@#$%^&*()_+\-=[\]{}|;:,.<>?]/.test(password);
 
     const varietyCount = [hasLowercase, hasUppercase, hasNumbers, hasSymbols].filter(Boolean).length;
     score += varietyCount * 7.5;

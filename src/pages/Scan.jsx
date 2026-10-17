@@ -96,9 +96,6 @@ export default function Scan() {
       setExtractionMethod(result.method);
       setRawText(result.rawText || '');
 
-      // If type was auto-detected (OCR fallback), use it
-      const finalType = result.detectedType || scanType;
-
       // For LinkedIn QR, ALWAYS try to decode the actual QR code (regardless of what Vision AI extracted)
       let linkedinUrl = result.data.linkedin_url || '';
       if (scanType === 'linkedin_qr') {
