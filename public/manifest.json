@@ -1,0 +1,72 @@
+{
+    "name": "BizPocket",
+    "short_name": "BizPocket",
+    "description": "Scan and organize your business cards and receipts with AI",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#0f0f0f",
+    "theme_color": "#0f0f0f",
+    "orientation": "portrait-primary",
+    "categories": [
+        "business",
+        "productivity",
+        "utilities"
+    ],
+    "lang": "en",
+    "dir": "ltr",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "screenshots": [],
+    "shortcuts": [
+        {
+            "name": "Scan",
+            "short_name": "Scan",
+            "description": "Scan a new card or receipt",
+            "url": "/scan",
+            "icons": [
+                {
+                    "src": "/icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "History",
+            "short_name": "History",
+            "description": "View scan history",
+            "url": "/history",
+            "icons": [
+                {
+                    "src": "/icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ]
+}

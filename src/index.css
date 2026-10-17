@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+/* Custom design tokens */
+:root {
+  --color-bg: #0f0f0f;
+  --color-surface: #1a1a1a;
+  --color-surface-2: #252525;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.6);
+  --color-text-dim: rgba(255, 255, 255, 0.4);
+  --color-primary: #a855f7;
+  --color-primary-hover: #9333ea;
+  --color-accent: #ec4899;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+[data-theme="light"] {
+  --color-bg: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #f0f0f0;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-text: #111111;
+  --color-text-muted: rgba(0, 0, 0, 0.6);
+  --color-text-dim: rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+/* Glass card effect */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+}
+
+[data-theme="light"] .glass {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Gradient accents */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 1.5s infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Safe areas for mobile */
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.safe-left {
+  padding-left: env(safe-area-inset-left, 0);
+}
+
+.safe-right {
+  padding-right: env(safe-area-inset-right, 0);
+}
+
+/* iOS specific safe area utilities */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+/* Ensure content is above iOS home indicator */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .min-h-screen {
+    min-height: calc(100vh - env(safe-area-inset-bottom, 0));
+  }
+}
+
+/* Input focus states */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+/* Disabled states */
+button:disabled, input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Image handling */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, 
+    var(--color-surface) 25%, 
+    var(--color-surface-2) 50%, 
+    var(--color-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
